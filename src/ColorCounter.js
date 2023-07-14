@@ -10,7 +10,10 @@ function ColorCounter({trackedColor}) {
 
     return (
         <div className="ColorCounter">
-            <h3>{trackedColor} count: {count}</h3>
+            {trackedColor.toUpperCase()} count: {count}
         </div>
     )
 }
+
+
+export default ColorCounter;
