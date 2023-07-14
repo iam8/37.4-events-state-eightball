@@ -1,0 +1,15 @@
+/* Ioana A Mititean */
+/* 37.4: React State - Eight Ball */
+
+
+.EightBall {
+    background-color: salmon;
+}
+
+.EightBall-ball {
+    background-color: black;
+}
+
+.EightBall-msg {
+    color: white;
+}
