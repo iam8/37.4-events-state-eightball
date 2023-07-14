@@ -2,12 +2,17 @@
 // 37.4: React State - Eight Ball
 
 import React from 'react';
+import { useState } from 'react';
 
 
-function EightBall(props) {
+function EightBall({answers}) {
+
+    // Set initial state
+    const [msg, setMsg] = useState("Think of a Question");
+    const [color, setColor] = useState("black");
 
     return (
-        <div>
+        <div className="EightBall">
 
         </div>
     )
