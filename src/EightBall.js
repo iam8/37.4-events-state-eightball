@@ -5,6 +5,8 @@ import React from 'react';
 import { useState } from 'react';
 import "./EightBall.css";
 
+import ColorCounter from './ColorCounter';
+
 
 function EightBall({answers}) {
 
@@ -37,6 +39,10 @@ function EightBall({answers}) {
 
     return (
         <div className="EightBall">
+            <ColorCounter trackedColor="green" />
+            <ColorCounter trackedColor="goldenrod" />
+            <ColorCounter trackedColor="red" />
+
             <div className="EightBall-ball" style={ballStyles} onClick={updateBallState}>
                 <div className="EightBall-msg">{msg}</div>
             </div>
