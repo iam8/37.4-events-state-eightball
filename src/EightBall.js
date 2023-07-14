@@ -8,8 +8,11 @@ import "./EightBall.css";
 
 function EightBall({answers}) {
 
-    const [msg, setMsg] = useState("Think of a Question");
-    const [color, setColor] = useState("black");
+    const initMsg = "Think of a Question";
+    const initColor = "black";
+
+    const [msg, setMsg] = useState(initMsg);
+    const [color, setColor] = useState(initColor);
 
     const ballStyles = {backgroundColor: color};
 
@@ -28,8 +31,8 @@ function EightBall({answers}) {
      * Reset Eight Ball to initial state.
      */
     function resetBall() {
-        setMsg("Think of a Question");
-        setColor("black");
+        setMsg(initMsg);
+        setColor(initColor);
     }
 
     return (
