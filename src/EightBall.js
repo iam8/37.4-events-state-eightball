@@ -11,11 +11,12 @@ function EightBall({answers}) {
     const [msg, setMsg] = useState("Think of a Question");
     const [color, setColor] = useState("black");
 
+    const ballStyles = {backgroundColor: color};
+
     /**
      * Update Eight Ball with a randomly-chosen message and color.
      */
-    function updateBallDisplay() {
-
+    function updateBallState() {
         const idx = Math.floor(Math.random() * answers.length);
         const answer = answers[idx];
 
@@ -25,10 +26,7 @@ function EightBall({answers}) {
 
     return (
         <div className="EightBall">
-            <h4>Current message: {msg}</h4>
-            <h4>Current color: {color}</h4>
-
-            <div className="EightBall-ball" onClick={updateBallDisplay}>
+            <div className="EightBall-ball" style={ballStyles} onClick={updateBallState}>
                 <div className="EightBall-msg">{msg}</div>
             </div>
         </div>
