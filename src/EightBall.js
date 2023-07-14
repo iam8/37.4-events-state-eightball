@@ -24,11 +24,21 @@ function EightBall({answers}) {
         setColor(answer.color);
     }
 
+    /**
+     * Reset Eight Ball to initial state.
+     */
+    function resetBall() {
+        setMsg("Think of a Question");
+        setColor("black");
+    }
+
     return (
         <div className="EightBall">
             <div className="EightBall-ball" style={ballStyles} onClick={updateBallState}>
                 <div className="EightBall-msg">{msg}</div>
             </div>
+
+            <button className="EightBall-reset" onClick={resetBall}>Reset</button>
         </div>
     )
 }
