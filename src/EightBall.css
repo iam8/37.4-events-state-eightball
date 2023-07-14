@@ -3,13 +3,25 @@
 
 
 .EightBall {
-    background-color: salmon;
+    display: flex;
+    height: 100vh;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
 }
 
 .EightBall-ball {
-    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    aspect-ratio: 1;
+    border-radius: 100%;
 }
 
 .EightBall-msg {
+    text-align: center;
     color: white;
+    background-color: darkblue;
+    font-size: 30px;
 }
