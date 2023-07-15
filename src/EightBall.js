@@ -57,7 +57,9 @@ function EightBall({answers=defaultAnswers}) {
     return (
         <div className="EightBall">
             <div className="EightBall-Color-Counter">
-                {Object.keys(counter).map(color => <div>{color} count: {counter[color]}</div>)}
+                {Object.keys(counter).map(color => {
+                    return <div key={color}>{color} count: {counter[color]}</div>;
+                })}
             </div>
 
             <div className="EightBall-ball" style={ballStyles} onClick={updateBall}>
