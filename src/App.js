@@ -5,6 +5,9 @@ import './App.css';
 import EightBall from './EightBall';
 
 
+/**
+ * Display Magic Eight Ball.
+ */
 function App() {
     return (
         <div className="App">
