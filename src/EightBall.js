@@ -4,9 +4,10 @@
 import React from 'react';
 import { useState } from 'react';
 import "./EightBall.css";
+import defaultAnswers from "./answers.json";
 
 
-function EightBall({answers}) {
+function EightBall({answers=defaultAnswers}) {
 
     const initMsg = "Think of a Question";
     const initColor = "black";
