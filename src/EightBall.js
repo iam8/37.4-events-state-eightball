@@ -4,6 +4,8 @@
 import React, {useState} from 'react';
 import "./EightBall.css";
 import defaultAnswers from "./answers.json";
+import altAnswers from "./answers2.json";
+import { createColorCounter } from './helpers';
 
 
 /**
@@ -20,29 +22,29 @@ import defaultAnswers from "./answers.json";
 function EightBall({answers=defaultAnswers}) {
 
     const initAnswer = {msg: "Think of a Question", color: "black"};
+    const initCounter = createColorCounter(answers);
 
     const [answer, setAnswer] = useState(initAnswer);
-    const [greenCount, setGreenCount] = useState(0);
-    const [goldenrodCount, setGoldenrodCount] = useState(0);
-    const [redCount, setRedCount] = useState(0);
+    const [counter, setCounter] = useState(initCounter);
 
     const ballStyles = {backgroundColor: answer.color};
-    const countSetMap = {
-        "green": () => {setGreenCount(greenCount + 1)},
-        "goldenrod": () => {setGoldenrodCount(goldenrodCount + 1)},
-        "red": () => {setRedCount(redCount + 1)},
-    };
 
     /**
      * Update Eight Ball with a randomly-chosen message and color.
      * Update color counter.
      */
     function updateBall() {
+
+        if (Object.keys(counter).length === 0) return;
+
         const idx = Math.floor(Math.random() * answers.length);
         const newAnswer = answers[idx];
 
         setAnswer(newAnswer);
-        countSetMap[newAnswer.color.toLowerCase()]();
+
+        const updCounter = {...counter};
+        updCounter[newAnswer.color] += 1;
+        setCounter(updCounter);
     }
 
     /**
@@ -50,17 +52,13 @@ function EightBall({answers=defaultAnswers}) {
      */
     function resetBall() {
         setAnswer(initAnswer);
-        setGreenCount(0);
-        setGoldenrodCount(0);
-        setRedCount(0);
+        setCounter(initCounter);
     }
 
     return (
         <div className="EightBall">
             <div className="EightBall-Color-Counter">
-                <div>Green counter: {greenCount}</div>
-                <div>Goldenrod counter: {goldenrodCount}</div>
-                <div>Red counter: {redCount}</div>
+                {Object.keys(counter).map(color => <div>{color} count: {counter[color]}</div>)}
             </div>
 
             <div className="EightBall-ball" style={ballStyles} onClick={updateBall}>
