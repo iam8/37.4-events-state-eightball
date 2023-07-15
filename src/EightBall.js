@@ -7,18 +7,27 @@ import "./EightBall.css";
 import defaultAnswers from "./answers.json";
 
 
+/**
+ * Magic Eight Ball component.
+ *
+ * On click: display a random answer and its corresponding color.
+ *
+ * Props:
+ * - answers: array of {msg, color} objects
+ *
+ * State:
+ * - answer: {msg, color} of current answer
+ */
 function EightBall({answers=defaultAnswers}) {
 
-    const initMsg = "Think of a Question";
-    const initColor = "black";
+    const initAnswer = {msg: "Think of a Question", color: "black"};
 
-    const [msg, setMsg] = useState(initMsg);
-    const [color, setColor] = useState(initColor);
+    const [answer, setAnswer] = useState(initAnswer);
     const [greenCount, setGreenCount] = useState(0);
     const [goldenrodCount, setGoldenrodCount] = useState(0);
     const [redCount, setRedCount] = useState(0);
 
-    const ballStyles = {backgroundColor: color};
+    const ballStyles = {backgroundColor: answer.color};
     const colorSetMap = {
         "green": () => {setGreenCount(greenCount + 1)},
         "goldenrod": () => {setGoldenrodCount(goldenrodCount + 1)},
@@ -31,20 +40,18 @@ function EightBall({answers=defaultAnswers}) {
      */
     function updateBall() {
         const idx = Math.floor(Math.random() * answers.length);
-        const answer = answers[idx];
+        const newAnswer = answers[idx];
 
-        setMsg(answer.msg);
-        setColor(answer.color);
+        setAnswer(newAnswer);
 
-        colorSetMap[answer.color.toLowerCase()]();
+        colorSetMap[newAnswer.color.toLowerCase()]();
     }
 
     /**
      * Reset Eight Ball to initial state.
      */
     function resetBall() {
-        setMsg(initMsg);
-        setColor(initColor);
+        setAnswer(initAnswer);
         setGreenCount(0);
         setGoldenrodCount(0);
         setRedCount(0);
@@ -59,7 +66,7 @@ function EightBall({answers=defaultAnswers}) {
             </div>
 
             <div className="EightBall-ball" style={ballStyles} onClick={updateBall}>
-                <div className="EightBall-msg">{msg}</div>
+                <div className="EightBall-msg">{answer.msg}</div>
             </div>
 
             <button className="EightBall-reset" onClick={resetBall}>Reset</button>
