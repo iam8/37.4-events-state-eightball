@@ -4,7 +4,6 @@
 import React, {useState} from 'react';
 import "./EightBall.css";
 import defaultAnswers from "./answers.json";
-import altAnswers from "./answers2.json";
 import { createColorCounter } from './helpers';
 
 
