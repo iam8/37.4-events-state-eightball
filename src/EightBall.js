@@ -1,8 +1,7 @@
 // Ioana A Mititean
 // 37.4: React State - Eight Ball
 
-import React from 'react';
-import { useState } from 'react';
+import React, {useState} from 'react';
 import "./EightBall.css";
 import defaultAnswers from "./answers.json";
 
@@ -28,7 +27,7 @@ function EightBall({answers=defaultAnswers}) {
     const [redCount, setRedCount] = useState(0);
 
     const ballStyles = {backgroundColor: answer.color};
-    const colorSetMap = {
+    const countSetMap = {
         "green": () => {setGreenCount(greenCount + 1)},
         "goldenrod": () => {setGoldenrodCount(goldenrodCount + 1)},
         "red": () => {setRedCount(redCount + 1)},
@@ -43,8 +42,7 @@ function EightBall({answers=defaultAnswers}) {
         const newAnswer = answers[idx];
 
         setAnswer(newAnswer);
-
-        colorSetMap[newAnswer.color.toLowerCase()]();
+        countSetMap[newAnswer.color.toLowerCase()]();
     }
 
     /**
