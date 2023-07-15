@@ -18,30 +18,24 @@ function EightBall({answers}) {
     const [redCount, setRedCount] = useState(0);
 
     const ballStyles = {backgroundColor: color};
+    const colorSetMap = {
+        "green": () => {setGreenCount(greenCount + 1)},
+        "goldenrod": () => {setGoldenrodCount(goldenrodCount + 1)},
+        "red": () => {setRedCount(redCount + 1)},
+    };
 
     /**
      * Update Eight Ball with a randomly-chosen message and color.
      * Update color counter.
      */
-    function updateBallState() {
+    function updateBall() {
         const idx = Math.floor(Math.random() * answers.length);
         const answer = answers[idx];
 
         setMsg(answer.msg);
         setColor(answer.color);
 
-        if (answer.color === "green") {
-            setGreenCount(greenCount + 1);
-        }
-
-        if (answer.color === "goldenrod") {
-            setGoldenrodCount(goldenrodCount + 1);
-        }
-
-        if (answer.color === "red") {
-            setRedCount(redCount + 1);
-        }
-
+        colorSetMap[answer.color.toLowerCase()]();
     }
 
     /**
@@ -63,7 +57,7 @@ function EightBall({answers}) {
                 <div>Red counter: {redCount}</div>
             </div>
 
-            <div className="EightBall-ball" style={ballStyles} onClick={updateBallState}>
+            <div className="EightBall-ball" style={ballStyles} onClick={updateBall}>
                 <div className="EightBall-msg">{msg}</div>
             </div>
 
